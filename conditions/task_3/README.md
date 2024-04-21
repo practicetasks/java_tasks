@@ -25,7 +25,7 @@ public class Practice {
 
         if (command.equals("convert")) {
             
-            System.out.println("В какую валюту хотите конвертировать рубли? Доступные варианты: USD, EUR, JPY.");
+            System.out.println("В какую валюту хотите конвертировать тенге? Доступные варианты: USD, EUR, JPY.");
             String currency = ...; // Считайте это значение с помощью scanner
             if (currency.equals("USD")) {
                 System.out.println("Ваши сбережения в долларах: " + moneyBeforeSalary / rateUSD);

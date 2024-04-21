@@ -56,7 +56,7 @@ public class Practice {
 
         if (command.equals("convert")) {
             String currency = "USD";
-            System.out.println("Вы хотите конвертировать рубли в " + currency);
+            System.out.println("Вы хотите конвертировать тенге в " + currency);
 
             if (currency.equals("USD")) {
                 System.out.println("Ваши сбережения в долларах: " + moneyBeforeSalary / rateUSD);
