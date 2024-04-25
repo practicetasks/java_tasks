@@ -33,6 +33,18 @@ public class Phone {
 }
 ```
 
+#### MobilePhone
+
+```java
+public class MobilePhone {
+    ...
+
+    public final void sendSms(String targetNumber, String messageText) {
+        System.out.println("Отправляем сообщение " + messageText + " по номеру " + targetNumber);
+    }
+}
+```
+
 #### Smartphone
 
 ```java
@@ -45,18 +57,6 @@ public class Smartphone {
         System.out.println("Напишем другу сообщение " + messageText + " по email " + email);
     }
 
-}
-```
-
-#### MobilePhone
-
-```java
-public class MobilePhone {
-    ...
-
-    public final void sendSms(String targetNumber, String messageText) {
-        System.out.println("Отправляем сообщение " + messageText + " по номеру " + targetNumber);
-    }
 }
 ```
 
