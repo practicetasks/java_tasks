@@ -62,28 +62,28 @@ public abstract class ValidationRule {
 // Дополните класс для проверки суммы ипотеки пользователя
 public class MortgageAmountValidationRule ...{
 
-public MortgageAmountValidationRule(Integer value) {
-    super(value, "Минимальный размер ипотеки - 1.000.000, а максимальный - 10.000.000");
-}
+    public MortgageAmountValidationRule(Integer value) {
+        super(value, "Минимальный размер ипотеки - 1.000.000, а максимальный - 10.000.000");
+    }
 
-// Объявите и реализуйте метод для проверки суммы ипотеки ниже
+    // Объявите и реализуйте метод для проверки суммы ипотеки ниже
     ...
 
-            }
+}
 ```
 
 ```java
 // Дополните класс для проверки возраста пользователя
 public class AgeValidationRule ...{
 
-public AgeValidationRule(Byte age) {
-    super(age, "Возраст для подачи на ипотеку должен быть старше 18 лет");
-}
-
-@Override
-public boolean isValid() {
-    return value >= 18;
-}
+    public AgeValidationRule(Byte age) {
+        super(age, "Возраст для подачи на ипотеку должен быть старше 18 лет");
+    }
+    
+    @Override
+    public boolean isValid() {
+        return value >= 18;
+    }
 
 }
 ```
@@ -92,14 +92,14 @@ public boolean isValid() {
 // Дополните класс для проверки трудоустроенности пользователя
 public class EmploymentValidationRule ...{
 
-public EmploymentValidationRule(Boolean value) {
-    super(value, "Ипотека выдается только трудоустроенным");
-}
-
-@Override
-public boolean isValid() {
-    return value;
-}
+    public EmploymentValidationRule(Boolean value) {
+        super(value, "Ипотека выдается только трудоустроенным");
+    }
+    
+    @Override
+    public boolean isValid() {
+        return value;
+    }
 }
 ```
 
