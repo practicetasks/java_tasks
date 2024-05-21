@@ -1,88 +1,71 @@
 # Задача
 
-Ваш коллега-программист написал класс `BankAccount`, но не покрыл его функциональность тестами. Коллега давно уволился,
-а класс используется практически везде в вашей программе, поэтому просто выкинуть его нельзя. Придётся тестировать!
-<br><br>
-По остаткам документации вам удалось собрать следующую информацию:
+На текущий момент класс `DiscountCalculatorTest` покрывает только один тест-кейс из пяти. Составьте ещё четыре теста,
+чтобы обеспечить полное покрытие класса `DiscountCalculator`.
+Вам нужно покрыть все тест-кейсы из списка:
+Если покупка на сумму 1–999 тенге, то скидка составляет 0%.
 
-* Чтобы создать `BankAccount`, нужно передать два аргумента — имя и фамилию человека, владеющего счётом.
-* Имя владельца можно получить, вызвав метод `getFullName()`. Результат вернётся в виде `String[]`, где по нулевому
-  индексу будет имя человека, по первому — фамилия.
-* После создания счёт нужно дополнительно активировать при помощи метода `activate(String currency)`. До того как это
-  произошло, метод `amount()` будет возвращать ошибку `IllegalStateException("Счёт не активирован.")`,
-  а `getCurrency()` — `null`. Активный счёт всегда возвращает `Integer` , отличный от `null`.
-* Счёт можно заблокировать вызовом `block`.
-* Статус блокировки счёта можно узнать с помощью метода `isBlocked()`.
-  <br>
+1.1. Совершить покупку на 1 тенге. Ожидаемое поведение: стоимость покупки составляет 1 тенге.
 
-#### Вам необходимо написать 3 теста:
+1.2. Совершить покупку на 333 тенге. Ожидаемое поведение: стоимость покупки составляет 333 тенге.
 
-* `shouldNotBeBlockedWhenCreated` должен проверять, что счёт не заблокирован, после создания стандартного
-  объекта `BankAccount` с помощью конструктора.
-* `shouldReturnZeroAmountAfterActivation` должен проверять, что счет не заблокирован после активации
-  методом `activate(String currency)` с передачей валюты [KZT, EUR, USD], и провеить, что баланс равен 0, а валюта
-  счета соответствует переданной.
-* `shouldBeBlockedAfterBlockIsCalled` должен проверять, что счёт заблокирован, после вызова метода `block()`.
-* `shouldReturnFirstNameThenSecondName` должен проверять, что при вызове метода `getFullName()` возвращается правильный
-  массив строк.
-* `shouldReturnNullAmountWhenNotActive` должен проверять, что при вызове метода `getAmount()` для неактивного счёта,
-  значение `currency` равно `null`, а также выбрасывается исключение `IllegalStateException` с соответствующим
-  сообщением.
+1.3. Совершить покупку на 999 тенге. Ожидаемое поведение: стоимость покупки составляет 999 тенге.
+Иначе скидка составляет 2%.
 
-#### BankAccountTest
+2.1. Совершить покупку на 1000 тенге. Ожидаемое поведение: стоимость покупки составляет 980 тенге (-2%).
+
+2.2. Совершить покупку на 2000 тенге. Ожидаемое поведение: стоимость покупки составляет 1960 тенге (-2%).
+
+Наименование тестовых методов уже представлено в классе `DiscountCalculatorTest`.
+
 
 ```java
-import org.junit.jupiter.api.Test;
-
-public class BankAccountTest {
-
+public class DiscountCalculator {
+    public int sumAfterDiscount(int sum) {
+        if (sum < 1000) {
+            return sum;
+        } else {
+            return (int) (sum * 0.98);
+        }
+    }
 }
 ```
 
-#### BankAccount
-
 ```java
-public class BankAccount {
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-    private boolean isBlocked = false;
-    private Integer amount;
-    private String currency;
+public class DiscountCalculatorTest {
 
-    private final String firstName;
-    private final String secondName;
+    DiscountCalculator discountCalculator = new DiscountCalculator();
 
-    public BankAccount(String firstName, String secondName) {
-        this.firstName = firstName;
-        this.secondName = secondName;
+    @Test
+    public void shouldGiveNoDiscountForValue999() {
+        // Подготовка
+        int buySum = 999;
+        int expectedSum = 999;
+
+        // Исполнение
+        int resultSum = discountCalculator.sumAfterDiscount(buySum);
+
+        // Проверка
+        Assertions.assertEquals(expectedSum, resultSum);
     }
 
-    public void block() {
-        this.isBlocked = true;
+    @Test
+    public void shouldGiveNoDiscountForValue1() {
     }
 
-    public void activate(String currency) {
-        this.amount = 0;
-        this.currency = currency;
+    @Test
+    public void shouldGiveNoDiscountForValue333() {
     }
 
-    public Integer getAmount() {
-        if (amount == null) {
-            throw new IllegalStateException("Счёт не активирован.");
-        }
-        return this.amount;
+    @Test
+    public void shouldGive2PercentDiscountForValue1000() {
     }
 
-    public String getCurrency() {
-        return currency;
-    }
-
-    public boolean isBlocked() {
-        return isBlocked;
-    }
-
-    public String[] getFullName() {
-        return new String[]{firstName, secondName};
+    @Test
+    public void shouldGive2PercentDiscountForValue2000() {
     }
 }
-
 ```
