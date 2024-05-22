@@ -15,13 +15,8 @@
 * Статус блокировки счёта можно узнать с помощью метода `isBlocked()`.
   <br>
 
-#### Вам необходимо написать 5 тестов:
+#### Вам необходимо написать 3 теста:
 
-* `shouldNotBeBlockedWhenCreated` должен проверять, что счёт не заблокирован, после создания стандартного
-  объекта `BankAccount` с помощью конструктора.
-* `shouldReturnZeroAmountAfterActivation` должен проверять, что счет не заблокирован после активации
-  методом `activate(String currency)` с передачей валюты [KZT, EUR, USD], и провеить, что баланс равен 0, а валюта
-  счета соответствует переданной.
 * `shouldBeBlockedAfterBlockIsCalled` должен проверять, что счёт заблокирован, после вызова метода `block()`.
 * `shouldReturnFirstNameThenSecondName` должен проверять, что при вызове метода `getFullName()` возвращается правильный
   массив строк.
@@ -34,8 +29,24 @@
 ```java
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 public class BankAccountTest {
 
+    @Test
+    void shouldNotBeBlockedWhenCreated() {
+        BankAccount account = new BankAccount("a", "b");
+        assertFalse(account.isBlocked());
+    }
+
+    @Test
+    public void shouldReturnZeroAmountAfterActivation() {
+        BankAccount account = new BankAccount("a", "b");
+        account.activate("KZT");
+        assertEquals(0, account.getAmount());
+        assertEquals("KZT", account.getCurrency());
+    }
 }
 ```
 
@@ -84,5 +95,20 @@ public class BankAccount {
         return new String[]{firstName, secondName};
     }
 }
-
 ```
+
+_подсказки ниже_
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+- В каждом тесте ваше первое действие — создать новый счёт. После этого вызовите один из его методов и посмотрите на
+  результат.
+- Чтобы проверить, что при неактивированном счёте вызывается `IllegalStateException` с нужным сообщением, а переменная
+  currency остаётся неинициализированной, необходимо воспользоваться методом `assertThrows(...)`, передав в него интерфейс
+  `Executable()` с вызовом метода `getAmount()`.
+- С помощью метода `assertNull(...)` можно проверить, что переменная currency не проинициализирована, а с помощью метода
+  `getMessage()` — получить сообщение из полученного исключения и сравнить его с ожидаемым.
+- Чтобы проверить, корректно ли изменяется булева переменная `isBlocked`, необходимо вызвать метод `block()`, после чего
+  проверить методом `assertTrue()`.
+- Для проверки того, корректный ли массив возвращает метод `getFullName()`, необходимо воспользоваться методом
+  `assertArrayEquals(...)`.
