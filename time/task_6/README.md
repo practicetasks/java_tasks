@@ -79,3 +79,9 @@ class Watch {
     }
 }
 ```
+_подсказки ниже_
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+Увеличивать порядковый номер временной зоны по кругу можно с помощью numOfZone = (numOfZone + 1) % 3 или numOfZone = (numOfZone + 1) % zones.size().
+Для изменения временной зоны воспользуйтесь методом withZoneSameLocal(newZone).
