@@ -51,18 +51,18 @@ public class IntegerParser {
 
         return Integer.parseInt(inputValue);
     }
+}
 
-    static class EmptyStringException extends RuntimeException {
-    }
+class EmptyStringException extends RuntimeException {
+}
 
-    static class StringIsTooSmallNumberException extends RuntimeException {
-    }
+class StringIsTooSmallNumberException extends RuntimeException {
+}
 
-    static class StringIsTooBigNumberException extends RuntimeException {
-    }
+class StringIsTooBigNumberException extends RuntimeException {
+}
 
-    static class StringNotNumberException extends RuntimeException {
-    }
+class StringNotNumberException extends RuntimeException {
 }
 ```
 
