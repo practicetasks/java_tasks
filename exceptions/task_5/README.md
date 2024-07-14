@@ -128,4 +128,4 @@ _подсказки ниже_
 
 <br><br><br><br><br><br><br><br>
 
-- Добавьте throws в методы, которые генерируют исключения — `addPizza()`, `takePizza()`, `add()`, `take()`, `getPositiveNumber()`.
+- Добавьте throws в методы, которые генерируют исключения — `addPizza()`, `takePizza()`, `add()`, `take()`.
