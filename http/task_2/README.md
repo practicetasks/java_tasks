@@ -95,8 +95,8 @@ public class Practice {
         likesInfo.setHasOwnerLiked(true);
         likesInfo.setLastLikeInfo(lastLikeInfo);
         likesInfo.setLikes(new Like[]{
-                new Like("Алексей", "http://example.com/avatars/amir.jpg"),
-                new Like("Елена", "http://example.com/avatars/elena.jpg"),
+                new Like("Амир", "http://example.com/avatars/amir.jpg"),
+                new Like("Диляра", "http://example.com/avatars/diliara.jpg"),
                 new Like("Света", "http://example.com/avatars/sveta.jpg"),
         });
 
