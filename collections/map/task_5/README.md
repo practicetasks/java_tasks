@@ -38,7 +38,7 @@
     * `id: 1, title: "The Shawshank Redemption", genre: "Drama", actors: ["Tim Robbins", "Morgan Freeman"], director: "Frank Darabont"`
     * `id: 2, title: "The Dark Knight", genre: "Action", actors: ["Christian Bale", "Heath Ledger"], director: "Christopher Nolan"`
     * `id: 3, title: "Inception", genre: "Sci-Fi", actors: ["Leonardo DiCaprio", "Joseph Gordon-Levitt"], director: "Christopher Nolan"`
-    * `id: 4, title: "The Godfather", genre: "Crime", actors: ["Marlon Brando", "Al Pacino"], director: "Francis Ford Coppola"`
+    * `id: 4, title: "The Godfather", genre: "Drama", actors: ["Marlon Brando", "Al Pacino"], director: "Francis Ford Coppola"`
 
 2. Добавить пользователя:
     * `id: 1, name: "John Doe"`
