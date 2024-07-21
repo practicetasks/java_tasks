@@ -20,7 +20,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class Practice {
-
     public static void main(String[] args) {
         HttpClient client = HttpClient.newHttpClient();
 
