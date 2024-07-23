@@ -8,11 +8,7 @@
 в виде текста `String`. Сериализуйте полученный объект информации о лайках в текст и выведите на экран.
 
 ```java
-import com.google.gson.Gson;
-
-import java.io.IOException;
-
-class LikesInfo {
+public class LikesInfo {
     private boolean hasOwnerLiked;
     private Like[] likes;
     private int repostsCount;
@@ -51,7 +47,10 @@ class LikesInfo {
     }
 }
 
-class Like {
+```
+
+```java
+public class Like {
     private String name;
     private String avatarUrl;
 
@@ -79,18 +78,24 @@ class Like {
         this.avatarUrl = avatarUrl;
     }
 }
+```
 
-class LastLikeInfo {
+```java
+public class LastLikeInfo {
     // ваш код
 }
+```
+
+```java
+import com.google.gson.Gson;
+import java.io.IOException;
 
 public class Practice {
-
     public static void main(String[] args) throws IOException {
         String lastLikeInfoStr = "{ \"user\": \"Амир\", \"hours\": 12, \"minutes\": 30}";
         LastLikeInfo lastLikeInfo = // код десериализации
 
-                LikesInfo likesInfo = new LikesInfo();
+        LikesInfo likesInfo = new LikesInfo();
         likesInfo.setRepostsCount(10);
         likesInfo.setHasOwnerLiked(true);
         likesInfo.setLastLikeInfo(lastLikeInfo);

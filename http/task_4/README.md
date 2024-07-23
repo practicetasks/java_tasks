@@ -12,8 +12,6 @@
 Также реализуйте метод `writeResponse`, который возвращает HTTP-ответ с указанным в коде текстом.
 
 ```java
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.*;
@@ -29,47 +27,60 @@ public class Practice {
 
         System.out.println("HTTP-сервер запущен на " + PORT + " порту!");
     }
+}
+```
 
-    static class PostsHandler implements HttpHandler {
-        @Override
-        public void handle(HttpExchange exchange) throws IOException {
-            // получите информацию об эндпоинте, к которому был запрос
-            Endpoint endpoint = ...
+```java
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+import java.io.*;
 
-            switch (endpoint) {
-                case GET_POSTS: {
-                    writeResponse(exchange, "Получен запрос на получение постов", 200);
-                    break;
-                }
-                case GET_COMMENTS: {
-                    writeResponse(exchange, "Получен запрос на получение комментариев", 200);
-                    break;
-                }
-                case POST_COMMENT: {
-                    writeResponse(exchange, "Получен запрос на добавление комментария", 200);
-                    break;
-                }
-                default:
-                    writeResponse(exchange, "Такого эндпоинта не существует", 404);
+public class PostsHandler implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        // получите информацию об эндпоинте, к которому был запрос
+        Endpoint endpoint = ...
+
+        switch (endpoint) {
+            case GET_POSTS: {
+                writeResponse(exchange, "Получен запрос на получение постов", 200);
+                break;
             }
+            case GET_COMMENTS: {
+                writeResponse(exchange, "Получен запрос на получение комментариев", 200);
+                break;
+            }
+            case POST_COMMENT: {
+                writeResponse(exchange, "Получен запрос на добавление комментария", 200);
+                break;
+            }
+            default:
+                writeResponse(exchange, "Такого эндпоинта не существует", 404);
         }
-
-        private Endpoint getEndpoint(String requestPath, String requestMethod) {
-            // реализуйте этот метод
-            // ...
-        }
-
-        private void writeResponse(HttpExchange exchange,
-                                   String responseString,
-                                   int responseCode) throws IOException {
-            /* Реализуйте отправку ответа, который содержит responseString в качестве тела ответа
-            и responseCode в качестве кода ответа.
-            Учтите, что если responseString — пустая строка, то её не нужно передавать в ответе. */
-            // ...
-        }
-
-        enum Endpoint {GET_POSTS, GET_COMMENTS, POST_COMMENT, UNKNOWN}
     }
+
+    private Endpoint getEndpoint(String requestPath, String requestMethod) {
+        // реализуйте этот метод
+        // ...
+    }
+
+    private void writeResponse(HttpExchange exchange,
+                               String responseString,
+                               int responseCode) throws IOException {
+        /* Реализуйте отправку ответа, который содержит responseString в качестве тела ответа
+        и responseCode в качестве кода ответа.
+        Учтите, что если responseString — пустая строка, то её не нужно передавать в ответе. */
+        // ...
+    }
+}
+```
+
+```java
+public enum Endpoint {
+    GET_POSTS,
+    GET_COMMENTS,
+    POST_COMMENT,
+    UNKNOWN
 }
 ```
 

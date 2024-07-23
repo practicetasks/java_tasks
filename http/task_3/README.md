@@ -14,14 +14,9 @@
 информации, поэтому тестируйте аккуратно!
 
 ```java
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
-
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.util.List;
 
 public class Practice {
     private static final int PORT = 8080;
@@ -34,36 +29,44 @@ public class Practice {
         httpServer.start();
         System.out.println("HTTP-сервер запущен на " + PORT + " порту!");
     }
+}
+```
 
-    static class HelloHandler implements HttpHandler {
-        @Override
-        public void handle(HttpExchange httpExchange) throws IOException {
-            String response;
+```java
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
 
-            // извлеките метод из запроса
-            String method = ...
+import java.io.OutputStream;
+import java.util.List;
 
-            switch (...){
-                // сформируйте ответ в случае, если был вызван POST-метод
-                case ...:
-                    // извлеките path из запроса
-                    String path = ...
-                    // а из path — профессию и имя
-                    String profession = ...
-                    String name = ...
+public class HelloHandler implements HttpHandler {
+    @Override
+    public void handle(HttpExchange httpExchange) throws IOException {
+        String response;
 
-                    // извлеките заголовок
-                    List<String> wishGoodDay = ...
+        // извлеките метод из запроса
+        String method = ...
 
-                    // соберите ответ
-                    response = ...
-                    // не забудьте про ответ для остальных методов
-            }
+        switch (...){
+            // сформируйте ответ в случае, если был вызван POST-метод
+            case ...:
+                // извлеките path из запроса
+                String path = ...
+                // а из path — профессию и имя
+                String profession = ...
+                String name = ...
 
-            httpExchange.sendResponseHeaders(200, 0);
-            try (OutputStream os = httpExchange.getResponseBody()) {
-                os.write(response.getBytes());
-            }
+                // извлеките заголовок
+                List<String> wishGoodDay = ...
+
+                // соберите ответ
+                response = ...
+                // не забудьте про ответ для остальных методов
+        }
+
+        httpExchange.sendResponseHeaders(200, 0);
+        try (OutputStream os = httpExchange.getResponseBody()) {
+            os.write(response.getBytes());
         }
     }
 }
