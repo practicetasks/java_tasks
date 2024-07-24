@@ -18,20 +18,10 @@
       найден`, где вместо `postId` будет переданный идентификатор. Код ответа должен быть равен `404`.
 
 ```java
-import com.google.gson.Gson;
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpServer;
-
-import java.io.*;
-import java.net.InetSocketAddress;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-class Post {
+public class Post {
     private int id;
     private String text;
     private List<Comment> commentaries = new ArrayList<>();
@@ -56,8 +46,10 @@ class Post {
         return id;
     }
 }
+```
 
-class Comment {
+```java
+public class Comment {
     private String user;
     private String text;
 
@@ -77,9 +69,31 @@ class Comment {
         return text;
     }
 }
+```
 
-public class Practice {
-    private static final int PORT = 8080;
+```java
+public enum Endpoint {
+    GET_POSTS,
+    GET_COMMENTS,
+    POST_COMMENT,
+    UNKNOWN
+}
+```
+
+```java
+import com.google.gson.Gson;
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+public class PostsHandler implements HttpHandler {
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
     private static Gson gson = new Gson();
     private static List<Post> posts = new ArrayList<>();
@@ -95,7 +109,95 @@ public class Practice {
         Post post3 = new Post(333, "Это пока последний пост.");
         posts.add(post3);
     }
+    
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        Endpoint endpoint = getEndpoint(exchange.getRequestURI().getPath(), exchange.getRequestMethod());
 
+        switch (endpoint) {
+            case GET_POSTS: {
+                handleGetPosts(exchange);
+                break;
+            }
+            case GET_COMMENTS: {
+                handleGetComments(exchange);
+                break;
+            }
+            case POST_COMMENT: {
+                handlePostComments(exchange);
+                break;
+            }
+            default:
+                writeResponse(exchange, "Такого эндпоинта не существует", 404);
+        }
+    }
+
+    private Endpoint getEndpoint(String requestPath, String requestMethod) {
+        String[] pathParts = requestPath.split("/");
+
+        if (pathParts.length == 2 && pathParts[1].equals("posts")) {
+            return Endpoint.GET_POSTS;
+        }
+        if (pathParts.length == 4 && pathParts[1].equals("posts") && pathParts[3].equals("comments")) {
+            if (requestMethod.equals("GET")) {
+                return Endpoint.GET_COMMENTS;
+            }
+            if (requestMethod.equals("POST")) {
+                return Endpoint.POST_COMMENT;
+            }
+        }
+        return Endpoint.UNKNOWN;
+    }
+
+    private void handleGetPosts(HttpExchange exchange) throws IOException {
+        // верните JSON, представляющий список постов. Код ответа должен быть 200.
+        // ..
+    }
+
+    private void handleGetComments(HttpExchange exchange) throws IOException {
+        Optional<Integer> postIdOpt = getPostId(exchange);
+            
+            /* Верните комментарии к указанному посту. Код ответа должен быть 200. 
+            Если запрос был составлен неверно, верните сообщение об ошибке. */
+        // ...
+
+    }
+
+    private Optional<Integer> getPostId(HttpExchange exchange) {
+            /* Реализуйте метод получения идентификатора поста.
+            Если идентификатор не является числом, верните Optional.empty(). */
+        // ...
+    }
+
+    private void handlePostComments(HttpExchange exchange) throws IOException {
+        writeResponse(exchange, "Этот эндпоинт пока не реализован", 200);
+    }
+
+    private void writeResponse(HttpExchange exchange,
+                               String responseString,
+                               int responseCode) throws IOException {
+        if (responseString.isBlank()) {
+            exchange.sendResponseHeaders(responseCode, 0);
+        } else {
+            byte[] bytes = responseString.getBytes(DEFAULT_CHARSET);
+            exchange.sendResponseHeaders(responseCode, bytes.length);
+            try (OutputStream os = exchange.getResponseBody()) {
+                os.write(bytes);
+            }
+        }
+        exchange.close();
+    }
+}
+```
+
+```java
+import com.sun.net.httpserver.HttpServer;
+
+import java.io.*;
+import java.net.InetSocketAddress;
+
+public class Practice {
+    private static final int PORT = 8080;
 
     public static void main(String[] args) throws IOException {
         HttpServer httpServer = HttpServer.create();
@@ -106,90 +208,10 @@ public class Practice {
 
         System.out.println("HTTP-сервер запущен на " + PORT + " порту!");
     }
-
-    static class PostsHandler implements HttpHandler {
-        @Override
-        public void handle(HttpExchange exchange) throws IOException {
-            Endpoint endpoint = getEndpoint(exchange.getRequestURI().getPath(), exchange.getRequestMethod());
-
-            switch (endpoint) {
-                case GET_POSTS: {
-                    handleGetPosts(exchange);
-                    break;
-                }
-                case GET_COMMENTS: {
-                    handleGetComments(exchange);
-                    break;
-                }
-                case POST_COMMENT: {
-                    handlePostComments(exchange);
-                    break;
-                }
-                default:
-                    writeResponse(exchange, "Такого эндпоинта не существует", 404);
-            }
-        }
-
-        private Endpoint getEndpoint(String requestPath, String requestMethod) {
-            String[] pathParts = requestPath.split("/");
-
-            if (pathParts.length == 2 && pathParts[1].equals("posts")) {
-                return Endpoint.GET_POSTS;
-            }
-            if (pathParts.length == 4 && pathParts[1].equals("posts") && pathParts[3].equals("comments")) {
-                if (requestMethod.equals("GET")) {
-                    return Endpoint.GET_COMMENTS;
-                }
-                if (requestMethod.equals("POST")) {
-                    return Endpoint.POST_COMMENT;
-                }
-            }
-            return Endpoint.UNKNOWN;
-        }
-
-        private void handleGetPosts(HttpExchange exchange) throws IOException {
-            // верните JSON, представляющий список постов. Код ответа должен быть 200.
-            // ..
-        }
-
-        private void handleGetComments(HttpExchange exchange) throws IOException {
-            Optional<Integer> postIdOpt = getPostId(exchange);
-            
-            /* Верните комментарии к указанному посту. Код ответа должен быть 200. 
-            Если запрос был составлен неверно, верните сообщение об ошибке. */
-            // ...
-
-        }
-
-        private Optional<Integer> getPostId(HttpExchange exchange) {
-            /* Реализуйте метод получения идентификатора поста.
-            Если идентификатор не является числом, верните Optional.empty(). */
-            // ...
-        }
-
-        private void handlePostComments(HttpExchange exchange) throws IOException {
-            writeResponse(exchange, "Этот эндпоинт пока не реализован", 200);
-        }
-
-        private void writeResponse(HttpExchange exchange,
-                                   String responseString,
-                                   int responseCode) throws IOException {
-            if (responseString.isBlank()) {
-                exchange.sendResponseHeaders(responseCode, 0);
-            } else {
-                byte[] bytes = responseString.getBytes(DEFAULT_CHARSET);
-                exchange.sendResponseHeaders(responseCode, bytes.length);
-                try (OutputStream os = exchange.getResponseBody()) {
-                    os.write(bytes);
-                }
-            }
-            exchange.close();
-        }
-
-        enum Endpoint {GET_POSTS, GET_COMMENTS, POST_COMMENT, UNKNOWN}
-    }
 }
 ```
+
+
 _подсказки ниже_
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
