@@ -98,10 +98,10 @@ public class CapitalizeFirstLetterProcessor implements LineProcessor {
     }
 }
 ```
+###### подсказки ниже
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-###### подсказки ниже
 
 - Перепишите функции `decorate` и processLine в формате лямбда-функций по
   образцу `(список входных параметров) -> { блок реализации функции }`.
