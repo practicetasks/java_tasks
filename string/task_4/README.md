@@ -24,6 +24,26 @@
 Печенье     1 уп.     378.75 
 ```
 
+```java
+import java.util.Scanner;
+
+public class CheckPrinter {
+    public static void printCheck(String[] items) {
+        // TODO
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите количество записей:");
+        int n = Integer.parseInt(scanner.nextLine());
+        String[] values = new String[n];
+        for (int i = 0; i < n; ++i)
+            values[i] = scanner.nextLine();
+        printCheck(values);
+    }
+}
+```
+
 _подсказки ниже_
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
