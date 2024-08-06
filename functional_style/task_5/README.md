@@ -76,10 +76,10 @@ import java.util.stream.Collectors;
 
 public class CandyBoxesStore {
     public static void main(String[] args) {
-        Candy candy1 = new Candy("Рахат", "Рахат", 28, 4, Set.of("Рафаэлло", "Қарақұм"));
-        Candy candy2 = new Candy("Шокобар", "Баян Сұлу", 32, 2, Set.of("Шоко", "Баян"));
-        Candy candy3 = new Candy("Ақ Тілегім", "Рахат", 44, 5, Set.of("Ақ тілегім", "Ақ тілек"));
-        Candy candy4 = new Candy("Тайжану", "Баян Сұлу", 14, 12, Set.of("ТАЙЖАНУ"));
+        Candy candy1 = new Candy("Рахат", "Рахат", 140, 4, Set.of("Рафаэлло", "Қарақұм"));
+        Candy candy2 = new Candy("Шокобар", "Баян Сұлу", 160, 2, Set.of("Шоко", "Баян"));
+        Candy candy3 = new Candy("Ақ Тілегім", "Рахат", 220, 5, Set.of("Ақ тілегім", "Ақ тілек"));
+        Candy candy4 = new Candy("Тайжану", "Баян Сұлу", 70, 12, Set.of("ТАЙЖАНУ"));
 
         List<Candy> candies = List.of(candy1, candy2, candy3, candy4);
 
@@ -91,6 +91,10 @@ public class CandyBoxesStore {
     }
 }
 ```
+
+_подсказки ниже_
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 - Создайте в `CandyBox` конструктор с двумя аргументами — именем набора и списком конфет. Количество конфет в наборе
   должно вычисляться автоматически на основе списка конфет.
