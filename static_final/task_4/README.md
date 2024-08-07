@@ -5,6 +5,7 @@
 - высокий (англ. _high_) — `TaskPriority.HIGH`,
 - средний (англ. _medium_) — `TaskPriority.MEDIUM`,
 - низкий (англ. _low_) — `TaskPriority.LOW`.
+
 Вам нужно реализовать поиск задач с наивысшим приоритетом из предложенного списка.
 
 
@@ -28,13 +29,14 @@ public class Task {
 
 
 ##### main
+
 ```java
 // импортируйте нужные пакеты
 
 public class Practice {
 
     public static void main(String[] args) {
-        List<Task> tasks = new ArrayList<>();
+        ArrayList<Task> tasks = new ArrayList<>();
         tasks.add(new Task(TaskPriority.HIGH, "Оплатить интернет."));
         tasks.add(new Task(TaskPriority.LOW, "Сходить в парикмахерскую."));
         tasks.add(new Task(TaskPriority.MEDIUM, "Выбрать подарок подруге на ДР."));
