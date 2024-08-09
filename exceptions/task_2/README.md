@@ -69,11 +69,10 @@ class StringNotNumberException extends RuntimeException {
 _подсказки ниже)_
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 ###### подсказки
 
 - Добавьте в код конструкцию `try — catch` для вызова метода `parseInt()`.
-- Блоков catch должно быть четыре. Объедините `NullStringException` и `EmptyStringException` в один блок, так как вывод там
-  одинаковый.
 - Проверьте, что каждому типу исключения соответствует свой текст.
 - Убедитесь, что вы не обрабатываете родительские исключения `Exception` или `Throwable`.
