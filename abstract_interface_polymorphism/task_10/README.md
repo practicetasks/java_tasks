@@ -1,22 +1,21 @@
 # Задача
 
 Допишите объявление класса `Printer`, который обеспечивает механизм работы принтера ценников в магазине: из разных
-магазинов в него поступают цены товаров в копейках, а для печати на ценниках принтер преобразует цены в тенге.
+магазинов в него поступают цены товаров в центах, а для печати на ценниках принтер преобразует цены в доллары.
 
 ```java
 import java.util.ArrayList;
 import java.util.List;
 
 public class Practice {
-
     public static void main(String[] args) {
-        // Первый магазин продает дорогие товары и хочет передавать копейки типом Long
+        // Первый магазин продает дорогие товары и хочет передавать цент с типом Long
         List<Long> longList = new ArrayList<>();
         longList.add(Long.MAX_VALUE);
 
         new Printer<>(longList).print();
 
-        // Второй магазин продает товары подешевле и использует для передачи копеек тип Integer
+        // Второй магазин продает товары подешевле и использует для передачи цент с типом Integer
         List<Integer> intList = new ArrayList<>();
         intList.add(100000);
 
@@ -28,10 +27,11 @@ public class Practice {
         // Этот вариант должен вызывать ошибку компиляции
         //new Printer<>(stringList).print();
     }
-
 }
+```
 
-class Printer... {
+```java
+public class Printer... {
     private final List<...> list;
 
     public Printer(... list) {
@@ -41,7 +41,7 @@ class Printer... {
     public void print() {
         for (int i = 0; i < list.size(); i++) {
             double price = list.get(i).doubleValue() / 100;
-            System.out.println("Цена товара: " + price + " тг.");
+            System.out.println("Цена товара: " + price + " $.");
         }
     }
 }
