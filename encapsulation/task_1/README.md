@@ -22,8 +22,10 @@ public class Main {
         System.out.println("Количество денег на счету - " + ... + " тг.");
     }
 }
+```
 
-class BankAccount {
+```java
+public class BankAccount {
     private long moneyAmount;
 
     // допишите код методов
