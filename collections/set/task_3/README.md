@@ -38,17 +38,19 @@ public class Practice {
         // реализуйте этот метод
         ...
     }
-      
-    static class Letter {
-        public String authorName;      // имя отправителя
-        public LocalDate dateReceived; // дата получения письма
-        public String text;            // текст письма
+}
+```
 
-        public Letter(String senderName, LocalDate dateReceived, String text) {
-            this.authorName = senderName;
-            this.dateReceived = dateReceived;
-            this.text = text;
-        }
+```java
+public class Letter {
+    public String authorName;      // имя отправителя
+    public LocalDate dateReceived; // дата получения письма
+    public String text;            // текст письма
+
+    public Letter(String senderName, LocalDate dateReceived, String text) {
+        this.authorName = senderName;
+        this.dateReceived = dateReceived;
+        this.text = text;
     }
 }
 ```
