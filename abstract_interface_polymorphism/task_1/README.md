@@ -7,10 +7,10 @@
 ```java
 // Выделите абстрактный класс Duck,
 // который будет содержать общие свойства и методы классов FlyingDuck и RubberDuck
-class Duck {
+public class Duck {
 }
 
-class FlyingDuck {
+public class FlyingDuck {
 
     public String getName() {
         return "Я - обычная утка. Кря!";
@@ -33,7 +33,7 @@ class FlyingDuck {
     }
 }
 
-class RubberDuck {
+public class RubberDuck {
 
     public String getName() {
         return "Я - резиновая уточка!";
