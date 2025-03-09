@@ -16,21 +16,29 @@ public class LostAndFoundOffice {
     // реализуйте метод check()
 
     for (Object object : things) { // логика проверки вещи в списке
-        if(object.equals(target)) {
+        if (object.equals(target)) {
             return true;
         }
-   
+    }
 }
 ```
 
 ##### main
 ```java
-class Ball { }      // Класс "мяч"
-class Accordion { } // Класс "аккордеон"
-class Hat { }       // Класс "шляпа"
-class Umbrella { }  // Класс "зонт"
+public class Ball { }      // Класс "мяч"
+```
+```java
+public class Accordion { } // Класс "аккордеон"
+```
+```java
+public class Hat { }       // Класс "шляпа"
+```
+```java
+public class Umbrella { }  // Класс "зонт"
+```
 
-public class Main {
+```java
+public class Practice {
     // Бюро находок
     static LostAndFoundOffice lostAndFound = new LostAndFoundOffice();
 
