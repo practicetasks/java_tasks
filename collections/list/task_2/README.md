@@ -15,20 +15,6 @@
 import java.util.NoSuchElementException;
 
 public class HandMadeLinkedList<T> {
-
-    class Node<E> {
-        public E data;
-        public Node<E> next;
-        public Node<E> prev;
-
-        public Node(Node<E> prev, E data, Node<E> next) {
-            this.data = data;
-            this.next = next;
-            this.prev = prev;
-        }
-    }
-
-
     /**
      * Указатель на первый элемент списка. Он же first
      */
@@ -45,17 +31,19 @@ public class HandMadeLinkedList<T> {
         final Node<T> oldHead = head;
         final Node<T> newNode = new Node<>(null, element, oldHead);
         head = newNode;
-        if (oldHead == null)
-            tail = newNode;
-        else
+        if (oldHead == null) {
+          tail = newNode;
+        } else {
             oldHead.prev = newNode;
+        }
         size++;
     }
 
     public T getFirst() {
         final Node<T> curHead = head;
-        if (curHead == null)
+        if (curHead == null) {
             throw new NoSuchElementException();
+        }
         return head.data;
     }
 
@@ -85,6 +73,22 @@ public class HandMadeLinkedList<T> {
         System.out.println(integers.size());
         System.out.println(integers.getLast());
         System.out.println(integers.size());
+    }
+}
+```
+
+---
+
+```java
+public class Node<E> {
+    public E data;
+    public Node<E> next;
+    public Node<E> prev;
+
+    public Node(Node<E> prev, E data, Node<E> next) {
+        this.data = data;
+        this.next = next;
+        this.prev = prev;
     }
 }
 ```
