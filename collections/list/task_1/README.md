@@ -52,11 +52,11 @@ public class HandMadeArrayList<T> {
     }
 
     public static void main(String[] args) {
-        final var ar = new HandMadeArrayList<Integer>();
+        final HandMadeArrayList<Integer> arr = new HandMadeArrayList<>();
         for (int i = 0; i < 2000; i++) {
-            ar.add(i);
+            arr.add(i);
         }
-		System.out.println(ar.size);
+		System.out.println(arr.size);
     }
 }
 ```
