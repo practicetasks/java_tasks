@@ -13,19 +13,22 @@ public class Practice {
         List<Long> longList = new ArrayList<>();
         longList.add(Long.MAX_VALUE);
 
-        new Printer<>(longList).print();
+        Printer<Long> longPrinter = new Printer<>(longList);
+        longPrinter.print();
 
         // Второй магазин продает товары подешевле и использует для передачи цент с типом Integer
         List<Integer> intList = new ArrayList<>();
         intList.add(100000);
 
-        new Printer<>(intList).print();
+        Printer<Integer> integerPrinter = new Printer<>(intList);
+        integerPrinter.print();
 
         List<String> stringList = new ArrayList<>();
         stringList.add("Hello");
 
         // Этот вариант должен вызывать ошибку компиляции
-        //new Printer<>(stringList).print();
+        // Printer<String> stringPrinter = new Printer<>(stringList);
+        // stringPrinter.print();
     }
 }
 ```
