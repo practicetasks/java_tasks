@@ -30,6 +30,7 @@ public class Practice {
                     System.out.println("Недостаточное количество пиццы не складе");
                 }
             }
+            System.out.println("Введите новую команду:");   
             action = scanner.nextLine();
         }
     }
@@ -55,7 +56,7 @@ public class Practice {
     public static int getPositiveNumber(final String hint) throws IncorrectInputException {
         System.out.println(hint);
         try {
-            final int count = scanner.nextInt();
+            final int count = Integer.parseInt(scanner.nextLine());
             if (count <= 0) {
                 throw new IncorrectInputException("Число должно быть больше 0");
             }
