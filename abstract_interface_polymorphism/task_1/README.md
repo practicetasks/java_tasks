@@ -9,7 +9,11 @@
 // который будет содержать общие свойства и методы классов FlyingDuck и RubberDuck
 public class Duck {
 }
+```
 
+---
+
+```java
 public class FlyingDuck {
 
     public String getName() {
@@ -32,7 +36,11 @@ public class FlyingDuck {
         System.out.println("Кря!");
     }
 }
+```
 
+---
+
+```java
 public class RubberDuck {
 
     public String getName() {
@@ -47,8 +55,11 @@ public class RubberDuck {
         System.out.println("Кря!");
     }
 }
+```
 
+---
 
+```java
 public class Practice {
     public static void main(String[] args) {
         FlyingDuck flyingDuck = new FlyingDuck();
