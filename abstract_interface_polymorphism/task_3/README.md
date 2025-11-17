@@ -8,17 +8,19 @@
 же индекс верный, удалите ненужную заметку и выведите пользователю сообщение: «Заметка успешно удалена!».
 
 ```java
-import java.util.ArrayList;
-import java.util.List;
-
-interface NoteBook {
+public interface NoteBook {
     void addNote(String note);
-
     void deleteNote(int index);
 }
+```
 
-class CalendarApp implements NoteBook {
-    List<String> notes = new ArrayList<>();
+---
+
+```java
+import java.util.ArrayList;
+
+public class CalendarApp implements NoteBook {
+    ArrayList<String> notes = new ArrayList<>();
 
     @Override
     public void addNote(String note) {
@@ -26,7 +28,11 @@ class CalendarApp implements NoteBook {
         System.out.println("Заметка успешно добавлена!");
     }
 }
+```
 
+---
+
+```java
 public class Practice {
     public static void main(String[] args) {
         CalendarApp noteBook = new CalendarApp();
