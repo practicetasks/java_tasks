@@ -41,7 +41,7 @@ public class BankAccountTest {
     }
 
     @Test
-    public void shouldReturnZeroAmountAfterActivation() {
+    void shouldReturnZeroAmountAfterActivation() {
         BankAccount account = new BankAccount("a", "b");
         account.activate("KZT");
         assertEquals(0, account.getAmount());
