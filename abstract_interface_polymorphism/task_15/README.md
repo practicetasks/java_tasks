@@ -17,7 +17,7 @@
         - Добавьте метод void scratch() — печатает "Cat <name> is scratching the sofa!".
     - Cow
         - Переопределяет makeSound(), чтобы выводить "Moo!".
-          ⸻
+
 ```java
 public class Main {
     public static void main(String[] args) {
