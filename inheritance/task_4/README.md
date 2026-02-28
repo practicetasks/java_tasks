@@ -119,13 +119,14 @@ public class Main {
 3 месяца
 - 1000 × 3 = 3000
 
-
-    User: Ali
-    Type: Basic
-    Duration: 3 months
-    Auto renew: true
-    Price: 3000.0
-    Active: true
+```
+User: Ali
+Type: Basic
+Duration: 3 months
+Auto renew: true
+Price: 3000.0
+Active: true
+```
 
 
 ----
@@ -140,13 +141,14 @@ public class Main {
 
 Итого: 10800
 
-    User: Dana
-    Type: Premium
-    Duration: 6 months
-    Auto renew: false
-    Price: 10800.0
-    Active: true
-
+```
+User: Dana
+Type: Premium
+Duration: 6 months
+Auto renew: false
+Price: 10800.0
+Active: true
+```
 
 --- 
 
@@ -161,14 +163,14 @@ public class Main {
 Доп. скидка 10% (за 12 месяцев):
 - 6000 − 600 = 5400
 
-
-    User: Arman
-    Type: Student
-    Duration: 12 months
-    Auto renew: true
-    Price: 5400.0
-    Active: true
-
+```
+User: Arman
+Type: Student
+Duration: 12 months
+Auto renew: true
+Price: 5400.0
+Active: true
+```
 
 ---
 
@@ -177,11 +179,11 @@ public class Main {
 trialDays = 14
 - Цена всегда 0
 
-
-      User: Aruzhan
-      Type: Trial
-      Duration: 0 months
-      Auto renew: false
-      Price: 0.0
-      Active: true
-
+```
+User: Aruzhan
+Type: Trial
+Duration: 0 months
+Auto renew: false
+Price: 0.0
+Active: true
+```
