@@ -161,6 +161,7 @@ public class Main {
 Доп. скидка 10% (за 12 месяцев):
 - 6000 − 600 = 5400
 
+
     User: Arman
     Type: Student
     Duration: 12 months
