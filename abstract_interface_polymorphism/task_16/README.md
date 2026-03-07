@@ -32,14 +32,13 @@
     ```
     Payment of <amount> from <account> successful
     ```
-и уменьшить баланс.
-
----
+    и уменьшить баланс.
 
 
-void printBalance()
-
-Account: <account>, Balance: <balance>
+- void printBalance()
+  ```
+  Account: <account>, Balance: <balance>
+  ```
 
 
 ---
