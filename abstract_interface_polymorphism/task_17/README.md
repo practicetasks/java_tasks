@@ -24,7 +24,6 @@
 String getType()
 - Возвращает "Standard".
 
----
 
 ## Наследники
 
